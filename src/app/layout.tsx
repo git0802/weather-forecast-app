@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +18,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} bg-white dark:bg-black`}>
+        <Providers>
+          <Navbar />
+          <div className="h-[calc(100vh-48px)] flex flex-col justify-between">
+            {children}
+            <Footer />
+          </div>
+        </Providers>
+      </body>
     </html>
   );
 }
+
+//added suppress hydrating for it so it don't give error when load the dark mode according the system
