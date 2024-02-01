@@ -97,8 +97,8 @@ type WeatherData = {
 
 // data fetching
 
-export async function getWeather(slug: string) {
-  // noStore();
+export async function getWeather(slug: string): Promise<WeatherData> {
+  noStore();
   const res = await fetch(
     `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${slug}&days=1&aqi=no&alerts=no`
   );
