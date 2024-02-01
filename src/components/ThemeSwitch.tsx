@@ -10,12 +10,13 @@ export default function ThemeSwitch() {
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return <div className="w-10 h-4"></div>;
+  if (!mounted)
+    return <div className="min-h-4 mr-2 sm:mr-3 sm:h-5 lg:w-7"></div>;
 
   if (resolvedTheme === "dark") {
     return (
       <FiSun
-        className="mx-3 h-4 sm:h-5 lg:w-7"
+        className=" min-h-4 mr-2 sm:mr-3 sm:h-5 lg:w-7"
         onClick={() => setTheme("light")}
       />
     );
@@ -24,7 +25,7 @@ export default function ThemeSwitch() {
   if (resolvedTheme === "light") {
     return (
       <FiMoon
-        className="mx-3 h-4 sm:h-5 lg:w-7"
+        className="  min-h-4 mr-2 sm:mr-3 sm:h-5 lg:w-7"
         onClick={() => setTheme("dark")}
       />
     );

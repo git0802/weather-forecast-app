@@ -9,7 +9,6 @@ import { CiLocationArrow1 } from "react-icons/ci";
 import { useState, useEffect, useRef } from "react";
 
 interface SearchResult {
-  // Define the shape of the search result data
   country: string;
   id: number;
   lat: number;
@@ -83,92 +82,90 @@ export default function Navbar() {
   }, [search]);
 
   return (
-    <div>
-      <div className="h-12 bg-white dark:bg-black border-b-[1px] border-gray-300 dark:border-stone-600 px-3 ">
-        <nav className="h-full m-auto flex items-center justify-between  sm:max-w-[640px] lg:max-w-[1024px] xl:max-w-[1280px]">
-          <div className="w-full flex justify-between items-center">
-            <Link
-              href="/"
-              className="text-sm font-bold leading-4 sm:text-base  lg:text-xl lg:font-extrabold"
-            >
-              Weather Forecast
-            </Link>
-            <ThemeSwitch />
-          </div>
+    <div className=" z-20 sticky top-0 h-12 bg-white dark:bg-black border-b-[1px] border-gray-300 dark:border-stone-700 px-3 ">
+      <nav className="h-full m-auto flex items-center justify-between  sm:max-w-[640px] lg:max-w-[1024px] xl:max-w-[1280px]">
+        <div className="w-full flex justify-between items-center">
+          <Link
+            href="/"
+            className="text-sm font-bold leading-4 sm:text-base  lg:text-xl lg:font-extrabold"
+          >
+            Weather Forecast
+          </Link>
+          <ThemeSwitch />
+        </div>
 
-          <div className="relative">
-            <div className="w-52 h-10 rounded-md overflow-hidden flex justify-between items-center bg-gray-100 dark:bg-neutral-800  sm:w-72 lg:w-96">
-              <input
-                className="h-full w-32 outline-none rounded-md bg-inherit text-xs p-2 sm:w-52 sm:text-sm lg:w-[306px]"
-                type="text"
-                placeholder="Search for location"
-                value={search}
-                onChange={handleInputChange}
-                onKeyUp={(e) => {
-                  if (e.key === "Backspace" && search === "") {
-                    setShowResults(false);
-                  }
-                }}
-                ref={searchInputRef}
-              />
-              {search && ( // Only render the button if the search is not empty
-                <button className="w-[38px] h-[38px] bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-800 hover:bg-gray-300  transition-colors ease-in-out duration-300 rounded-md flex items-center justify-center">
-                  <TfiClose
-                    className="w-full h-4"
-                    onClick={() => {
-                      handleClearSearch(); // Clear the search bar and hide search options
-                    }}
-                  />
-                </button>
-              )}
-
-              <button className=" w-[38px] h-[38px] bg-blue-300 dark:bg-blue-500 hover:bg-blue-400 dark:hover:bg-blue-600  transition-colors ease-in-out duration-300 rounded-md flex items-center justify-center">
-                <TfiSearch
+        <div className="relative">
+          <div className="w-52 h-10 rounded-md overflow-hidden flex justify-between items-center bg-gray-100 dark:bg-neutral-800  sm:w-72 lg:w-96">
+            <input
+              className="h-full w-32 outline-none rounded-md bg-inherit text-xs p-2 sm:w-52 sm:text-sm lg:w-[306px]"
+              type="text"
+              placeholder="Search for location"
+              value={search}
+              onChange={handleInputChange}
+              onKeyUp={(e) => {
+                if (e.key === "Backspace" && search === "") {
+                  setShowResults(false);
+                }
+              }}
+              ref={searchInputRef}
+            />
+            {search && ( // Only render the button if the search is not empty
+              <button className="w-[38px] h-[38px] bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-800 hover:bg-gray-300  transition-colors ease-in-out duration-300 rounded-md flex items-center justify-center">
+                <TfiClose
                   className="w-full h-4"
                   onClick={() => {
-                    if (data.length > 0 && firstResultLinkRef.current) {
-                      firstResultLinkRef.current.click();
-                    }
+                    handleClearSearch(); // Clear the search bar and hide search options
                   }}
                 />
               </button>
-            </div>
-            {showResults && (
-              <ul className="absolute mt-2 h-fit w-full rounded-md overflow-hidden bg-slate-100 dark:bg-zinc-800">
-                {data.map((result, index) => (
-                  <li
-                    key={result.id}
-                    onClick={() => console.log(`Clicked on ${result.name}`)} // Handle click on li as needed
-                  >
-                    <Link
-                      href={`/city/${result.name}`}
-                      ref={index === 0 ? firstResultLinkRef : null}
-                      className="px-3 py-2  flex justify-between items-center border-b-[1px] border-gray-300 dark:border-stone-600  hover:bg-slate-200 dark:hover:bg-zinc-900 transition-colors ease-in-out duration-300 "
-                      onClick={() => {
-                        handleClearSearch(); // Clear the search bar and hide search options
-                      }}
-                    >
-                      <div>
-                        <h2 className="text-base leading-5">{result.name}</h2>
-                        <p className="text-sm font-light opacity-80 leading-4 pt-1">
-                          {result.region && (
-                            <span>
-                              {result.region}
-                              {", "}
-                            </span>
-                          )}
-                          {result.country && <span>{result.country}</span>}
-                        </p>
-                      </div>
-                      <CiLocationArrow1 className="min-w-8 h-6" />{" "}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
             )}
+
+            <button className=" w-[38px] h-[38px] bg-blue-300 dark:bg-blue-500 hover:bg-blue-400 dark:hover:bg-blue-600  transition-colors ease-in-out duration-300 rounded-md flex items-center justify-center">
+              <TfiSearch
+                className="w-full h-4"
+                onClick={() => {
+                  if (data.length > 0 && firstResultLinkRef.current) {
+                    firstResultLinkRef.current.click();
+                  }
+                }}
+              />
+            </button>
           </div>
-        </nav>
-      </div>
+          {showResults && (
+            <ul className="absolute mt-2 h-fit w-full rounded-md overflow-hidden bg-slate-100 dark:bg-zinc-800">
+              {data.map((result, index) => (
+                <li
+                  key={result.id}
+                  onClick={() => console.log(`Clicked on ${result.name}`)} // Handle click on li as needed
+                >
+                  <Link
+                    href={`/city/${result.name}`}
+                    ref={index === 0 ? firstResultLinkRef : null}
+                    className="px-3 py-2  flex justify-between items-center border-b-[1px] border-gray-300 dark:border-stone-600  hover:bg-slate-200 dark:hover:bg-zinc-900 transition-colors ease-in-out duration-300 "
+                    onClick={() => {
+                      handleClearSearch(); // Clear the search bar and hide search options
+                    }}
+                  >
+                    <div>
+                      <h2 className="text-base leading-5">{result.name}</h2>
+                      <p className="text-sm font-light opacity-80 leading-4 pt-1">
+                        {result.region && (
+                          <span>
+                            {result.region}
+                            {", "}
+                          </span>
+                        )}
+                        {result.country && <span>{result.country}</span>}
+                      </p>
+                    </div>
+                    <CiLocationArrow1 className="min-w-8 h-6" />{" "}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </nav>
     </div>
   );
 }
