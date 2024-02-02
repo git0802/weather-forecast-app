@@ -90,75 +90,84 @@ export default function SunMoonTime({ astro }: SunMoonTimeProps) {
   );
 
   return (
-    <section className="w-full h-fit p-4 border border-gray-300 dark:border-stone-700 rounded-md">
-      <p className="text-[15px] font-semibold">Sun/Moon</p>
-      <div className="">
-        <div className="">
-          <div className="flex justify-between mt-9">
+    <section className="w-full h-fit text-sm lg:text-base p-4 border border-gray-300 dark:border-stone-700 rounded-md lg:h-full lg:p-5 lg:w-[24rem] lg:rounded-lg xl:rounded-xl">
+      <p className="text-[15px] font-semibold lg:text-base">Sun/Moon</p>
+      <div className=" sm:flex sm:gap-6 sm:items-center lg:block">
+        <div className="sm:flex-1 ">
+          <div className="flex justify-between mt-9 sm:mt-5 lg:mt-6">
             <div className="w-20 h-24 flex flex-col items-center justify-center">
-              <Image width={25} height={25} src="/sunrise.svg" alt="sunrise" />
-              <div className="text-sm opacity-80 mt-2">Sunrise</div>
-              <div className="text-sm font-medium text-center">
-                {astro.sunrise}
-              </div>
+              <Image
+                width={30}
+                height={30}
+                src="/sunrise.svg"
+                alt="sunrise"
+                className="w-6 lg:w-7"
+              />
+              <div className=" opacity-80 mt-2 ">Sunrise</div>
+              <div className=" font-medium text-center ">{astro.sunrise}</div>
             </div>
             <div className="flex flex-col items-center justify-end ">
-              <div className="text-sm leading-4 opacity-80 mt-2">
-                total time
-              </div>
-              <div className="text-sm font-medium pb-1">{sunriseToSunset}</div>
+              <div className=" leading-4 opacity-80 mt-2 ">total time</div>
+              <div className=" font-medium pb-1">{sunriseToSunset}</div>
             </div>
             <div className="w-20 h-24 flex flex-col items-center justify-center">
-              <Image width={25} height={25} src="/sunset.svg" alt="sunset" />
-              <div className="text-sm opacity-80 mt-2">Sunset</div>
-              <div className="text-sm font-medium text-center">
-                {astro.sunset}
-              </div>
+              <Image
+                width={30}
+                height={30}
+                src="/sunset.svg"
+                alt="sunset"
+                className="w-6 lg:w-7"
+              />
+              <div className=" opacity-80 mt-2 ">Sunset</div>
+              <div className=" font-medium text-center ">{astro.sunset}</div>
             </div>
           </div>
 
-          <div className="flex justify-between mt-10">
+          <div className="flex justify-between mt-10 sm:mt-6 sm:mb-12">
             <div className="w-20 h-24 flex flex-col items-center justify-center">
-              <Image width={25} height={25} src="/moonset.svg" alt="moonrise" />
-              <div className="text-sm opacity-80 mt-2">Moonset</div>
-              <div className="text-sm font-medium text-center ">
-                {astro.moonset}
-              </div>
+              <Image
+                width={30}
+                height={30}
+                src="/moonset.svg"
+                alt="moonrise"
+                className="w-6 lg:w-7"
+              />
+              <div className=" opacity-80 mt-2">Moonset</div>
+              <div className=" font-medium text-center ">{astro.moonset}</div>
             </div>
             <div className="flex flex-col items-center justify-end ">
-              <div className="text-sm leading-4 opacity-80 mt-2">
-                total time
-              </div>
-              <div className="text-sm font-medium text-center ">
+              <div className=" leading-4 opacity-80 mt-2">total time</div>
+              <div className=" font-medium text-center ">
                 {moonriseToMoonset}
               </div>
             </div>
             <div className="w-20 h-24 flex flex-col items-center justify-center">
               <Image
-                width={25}
-                height={25}
+                width={30}
+                height={30}
                 src="/moonrise.svg"
                 alt="moonrise"
+                className="w-6 lg:w-7"
               />
-              <div className="text-sm opacity-80 mt-2">Moonrise</div>
-              <div className="text-sm font-medium text-center ">
-                {astro.moonrise}
-              </div>
+              <div className=" opacity-80 mt-2">Moonrise</div>
+              <div className=" font-medium text-center ">{astro.moonrise}</div>
             </div>
           </div>
         </div>
 
-        <div className="mt-[30px]">
-          <p className="text-[15px] font-semibold">Moon phase</p>
+        <div className="mt-[30px] sm:flex-1 sm:mt-0 sm:mb-6">
+          <p className="text-[15px] font-semibold sm:pl-4 lg:text-base lg:pl-0">
+            Moon phase
+          </p>
           <div className="flex items-center mt-3 ">
             <Image
-              className="ml-1 w-[70px]"
+              className="ml-1 w-[70px] lg:w-20"
               width={80}
               height={80}
               src={`/moon/${moonPhaseImages[astro.moon_phase]}`}
               alt="moon-icon"
             />
-            <div className="ml-5 text-[17px]  opacity-95">
+            <div className="ml-5 text-[17px]  opacity-95 lg:text-lg font-medium">
               {astro.moon_phase}
             </div>
           </div>

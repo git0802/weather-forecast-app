@@ -60,7 +60,7 @@ export default function HourlyForecast({
 
   return (
     <div
-      className="mt-4 w-full h-auto overflow-x-auto whitespace-nowrap pb-2 scrollbar scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100  dark:scrollbar-thumb-stone-400 dark:scrollbar-track-stone-800"
+      className="mt-4 border-x rounded-md lg:rounded-lg xl:rounded-xl border-gray-300 dark:border-stone-700 w-full h-auto overflow-x-auto whitespace-nowrap pb-2 scrollbar scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100  dark:scrollbar-thumb-stone-400 dark:scrollbar-track-stone-800  sm:max-w-[640px] sm:mx-auto lg:max-w-[1024px] xl:max-w-[1280px] "
       ref={containerRef}
     >
       <div className="inline-flex w-auto gap-2 ">
@@ -69,7 +69,7 @@ export default function HourlyForecast({
 
           return (
             <div
-              className={`w-44 h-80 pt-2 px-5 flex flex-col  border rounded-md 
+              className={`w-44 h-80 pt-2 px-5 flex flex-col  border rounded-md lg:rounded-lg xl:rounded-xl
               ${
                 index === activeHourIndex
                   ? "border-gray-500 dark:border-stone-300"

@@ -16,7 +16,7 @@ export default function ThemeSwitch() {
   if (resolvedTheme === "light") {
     return (
       <FiSun
-        className=" min-h-4 mr-2 sm:mr-3 sm:h-5 lg:w-7"
+        className=" min-h-4 mr-2 sm:mr-3 sm:h-5 lg:w-7 cursor-pointer"
         onClick={() => setTheme("dark")}
       />
     );
@@ -25,7 +25,7 @@ export default function ThemeSwitch() {
   if (resolvedTheme === "dark") {
     return (
       <FiMoon
-        className="  min-h-4 mr-2 sm:mr-3 sm:h-5 lg:w-7"
+        className="  min-h-4 mr-2 sm:mr-3 sm:h-5 lg:w-7 cursor-pointer"
         onClick={() => setTheme("light")}
       />
     );

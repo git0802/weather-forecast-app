@@ -3,7 +3,6 @@ import { unstable_noStore as noStore } from "next/cache";
 import { API_KEY } from "@/utils/urls";
 import { formatDateTime, formatDateOnly, extractTime } from "@/utils/time";
 
-import styles from "./page.module.css";
 import Image from "next/image";
 import SunMoonTime from "@/components/SunMoon";
 import HourlyForecast from "@/components/HourlyForecast";
@@ -165,14 +164,14 @@ export default async function Page({
 
   return (
     <>
-      <main className="px-3 pt-2">
-        <section className="w-full h-fit flex flex-col gap-2 ">
-          <div className="w-full h-fit p-4 border border-gray-300 dark:border-stone-700 rounded-md">
+      <main className="px-3 pt-2 ">
+        <section className="w-full h-fit flex flex-col gap-2 mx-auto sm:max-w-[640px] lg:max-w-[1024px] lg:flex-row  lg:h-[29rem] xl:max-w-[1280px] xl:h-[30rem]">
+          <div className="w-full h-fit p-4 border border-gray-300 dark:border-stone-700 rounded-md lg:h-full lg:w-[40rem] lg:p-5 xl:w-[56rem] lg:rounded-lg xl:rounded-xl">
             <div>
-              <h2 className="text-xl font-semibold leading-8">
+              <h2 className="text-xl font-semibold leading-8 sm:text-3xl xl:text-4xl ">
                 {data.location.name}
               </h2>
-              <div className="text-sm font-normal leading-tight opacity-90">
+              <div className="text-sm font-normal leading-tight opacity-90 sm:text-base sm:mt-1 xl:text-lg xl:mt-2">
                 {data.location.region && (
                   <span>
                     {data.location.region}
@@ -182,47 +181,50 @@ export default async function Page({
                 {data.location.country && <span>{data.location.country}</span>}
               </div>
 
-              <h4 className="mt-5 text-sm font-semibold">Current Weather</h4>
-              <div className="text-xs font-normal opacity-90 leading-5">
+              <h4 className="mt-5 text-sm font-semibold sm:text-base sm:mt-9 xl:text-lg">
+                Current Weather
+              </h4>
+              <div className="text-xs font-normal opacity-90 leading-5 sm:text-sm  xl:text-base">
                 {formattedDateTime}
               </div>
 
-              <div className="flex my-8 items-center gap-4">
+              <div className="flex my-8 items-center gap-4 sm:my-10 xl:gap-7">
                 <Image
                   width={100}
                   height={100}
                   src={`https:${data.current.condition.icon}`}
                   alt={data.current.condition.text}
-                  className="w-24"
+                  className="w-24 h-24 sm:w-28 sm:h-28"
                 />
 
-                <div className=" flex flex-col justify-between gap-3 mr-2">
+                <div className=" flex flex-col justify-between gap-3 mr-2 xl:gap-4">
                   <div className="flex ">
                     <div>
-                      <span className="text-4xl font-medium">
+                      <span className="text-4xl font-medium sm:text-5xl xl:text-6xl">
                         {data.current.temp_c}
                       </span>
-                      <span className="text-sm">&deg;C</span>
+                      <span className="text-sm ml-1 sm:text-base xl:text-lg">
+                        &deg;C
+                      </span>
                     </div>
-                    <div className="border mx-3  border-gray-300 dark:border-stone-700"></div>
+                    <div className="border mx-3 border-gray-300 dark:border-stone-700 sm:mx-5 xl:mx-6"></div>
                     <div>
-                      <span
-                        className="text-4xl font-medium
-                      "
-                      >
+                      <span className="text-4xl font-medium sm:text-5xl  xl:text-6xl">
                         {data.current.temp_f}
                       </span>
 
-                      <span className="text-sm">&deg;F</span>
+                      <span className="text-sm ml-1 sm:text-base xl:text-lg">
+                        &deg;F
+                      </span>
                     </div>
                   </div>
-                  <div className="text-2xl font-semibold">
+                  <div className="text-2xl font-semibold sm:text-3xl">
                     {data.current.condition.text}
                   </div>
                 </div>
               </div>
-              <div className="flex gap-2  text-sm font-semibold">
-                <p className="">Feels like :</p>
+              <div className="flex gap-2  text-sm font-semibold sm:gap-3 sm:text-base xl:text-lg xl:gap-4">
+                <p>Feels like :</p>
 
                 <p>
                   <span className="opacity-85">{data.current.feelslike_c}</span>
@@ -235,7 +237,7 @@ export default async function Page({
                   <span className="text-xs font-light ml-1">&deg;F</span>
                 </p>
               </div>
-              <div className="mt-6 text-[11px] font-light opacity-85">
+              <div className="mt-6 text-[11px] font-light opacity-85 lg:mt-10 ">
                 <span>Last Updated : </span>
                 <span> {lastUpdateTime}</span>
               </div>
@@ -243,8 +245,8 @@ export default async function Page({
           </div>
           <SunMoonTime astro={astro} />
         </section>
-        <section className="grid grid-cols-2 w-full h-fit gap-2 mt-2">
-          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3">
+        <section className="grid grid-cols-2 w-full h-fit gap-2 mt-2 sm:mx-auto sm:max-w-[640px] lg:max-w-[1024px]  sm:grid-cols-3 lg:grid-cols-6 xl:max-w-[1280px]">
+          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl">
             <Image
               width={90}
               height={90}
@@ -253,14 +255,14 @@ export default async function Page({
               alt="day night icon"
             />
 
-            <p className="text-base">
+            <p className="text-base xl:text-lg">
               <span className="opacity-80">it&apos;s a </span>
-              <span className="font-medium">
+              <span className="font-medium ">
                 {data.current.is_day ? "Day" : "Night"}
               </span>
             </p>
           </div>
-          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3">
+          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl">
             <Image
               width={90}
               height={90}
@@ -268,12 +270,12 @@ export default async function Page({
               src="/humidity.png"
               alt="humidity icon"
             />
-            <p className="text-base">
+            <p className="text-base xl:text-lg">
               <span className="opacity-80">Humidity </span>
               <span className="font-medium">{data.current.humidity}&#37;</span>
             </p>
           </div>
-          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3">
+          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl">
             <Image
               width={90}
               height={90}
@@ -281,12 +283,12 @@ export default async function Page({
               src="/cloud.png"
               alt="cloud icon"
             />
-            <p className="text-base">
+            <p className="text-base xl:text-lg">
               <span className="opacity-80">Cloud </span>
               <span className="font-medium">{data.current.cloud}&#37;</span>
             </p>
           </div>
-          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3">
+          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl">
             <Image
               width={90}
               height={90}
@@ -294,17 +296,17 @@ export default async function Page({
               src="/wind-speed.png"
               alt="wind speed icon"
             />
-            <div className="flex text-sm gap-1 ">
-              <span className="opacity-80 w-11 text-center leading-4">
+            <div className="flex text-sm gap-1 xl:text-base xl:items-center xl:gap-2 ">
+              <span className="opacity-80 w-11 text-center leading-4 xl:w-12">
                 Wind Speed
               </span>
-              <span className="font-medium text-xs">
+              <span className="font-medium text-xs xl:text-sm">
                 <p>{data.current.wind_kph} km&#47;hr</p>
                 <p>{data.current.wind_mph} miles&#47;hr</p>
               </span>
             </div>
           </div>
-          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3">
+          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl">
             <Image
               width={90}
               height={90}
@@ -313,16 +315,21 @@ export default async function Page({
               alt="wind dir icon"
               style={{ transform: `rotate(${data.current.wind_degree}deg)` }}
             />
-            <div className="text-xs text-center font-medium">
+            <div className="text-xs text-center font-medium xl:text-sm">
               <span className="opacity-80">Wind dir </span>
-              <span className="text-sm">{data.current.wind_dir} &#124;</span>
-              <span className="text-sm"> {data.current.wind_degree}&deg;</span>
+              <span className="text-sm xl:text-base">
+                {data.current.wind_dir} &#124;
+              </span>
+              <span className="text-sm xl:text-base">
+                {" "}
+                {data.current.wind_degree}&deg;
+              </span>
               <div className="opacity-80">
                 ({getFullWindDirection(data.current.wind_dir)})
               </div>
             </div>
           </div>
-          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3">
+          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl">
             <Image
               width={90}
               height={90}
@@ -330,7 +337,7 @@ export default async function Page({
               src="/visibility.png"
               alt="visibility icon"
             />
-            <div className="flex text-sm items-center gap-2 ">
+            <div className="flex text-sm items-center gap-2 xl:text-base">
               <span className="opacity-80">Visibility </span>
               <span className="font-medium">
                 <p>{data.current.vis_km} km</p>
@@ -339,12 +346,12 @@ export default async function Page({
             </div>
           </div>
         </section>
-        <h2 className="mt-5 mb-4 font-semibold">
+        <h2 className="mt-5 mb-4 font-semibold sm:mx-auto sm:max-w-[640px] lg:max-w-[1024px] xl:max-w-[1280px] ">
           <span className="text-xl ">Forecast </span>
           <span className="text-base  opacity-80"> for {forecastDate}</span>
         </h2>
-        <section className="grid grid-cols-1 gap-2 h-fit">
-          <div className="h-44 text-sm font-medium flex gap-3 flex-col justify-center items-center border border-gray-300 dark:border-stone-700 rounded-md">
+        <section className="grid grid-cols-1 gap-2 h-fit sm:mx-auto sm:max-w-[640px] sm:grid-cols-2 lg:max-w-[1024px] lg:grid-cols-4 xl:max-w-[1280px]">
+          <div className="h-44 text-sm font-medium flex gap-3 flex-col justify-center items-center border border-gray-300 dark:border-stone-700 rounded-md lg:rounded-lg xl:rounded-xl lg:h-48 xl:text-base xl:h-52">
             <div>
               <span className="opacity-80">Max temp today &#58; </span>
               <span className="ml-1">
@@ -376,7 +383,7 @@ export default async function Page({
               </span>
             </div>
           </div>
-          <div className="h-44 text-sm font-medium flex gap-3 flex-col justify-center items-center border border-gray-300 dark:border-stone-700 rounded-md">
+          <div className="h-44 text-sm font-medium flex gap-3 flex-col justify-center items-center border border-gray-300 dark:border-stone-700 rounded-md lg:rounded-lg xl:rounded-xl lg:h-48 xl:text-base xl:h-52">
             <div className="flex items-center gap-3">
               <span className="opacity-80">Max wind speed &#58; </span>
               <span className="text-xs ">
@@ -396,7 +403,7 @@ export default async function Page({
               <span className="text-xs">{forecast.avghumidity} &#37;</span>
             </div>
           </div>
-          <div className="h-44 text-sm font-medium flex gap-3 flex-col justify-center items-center border border-gray-300 dark:border-stone-700 rounded-md">
+          <div className="h-44 text-sm font-medium flex gap-3 flex-col justify-center items-center border border-gray-300 dark:border-stone-700 rounded-md lg:rounded-lg xl:rounded-xl lg:h-48 xl:text-base xl:h-52">
             <div>
               <div className="mb-1">
                 <span className="opacity-80 mr-1">
@@ -423,22 +430,26 @@ export default async function Page({
             </div>
           </div>
 
-          <div className="h-44  flex pb-6 flex-col justify-center items-center border border-gray-300 dark:border-stone-700 rounded-md">
+          <div className="h-44  flex pb-6 flex-col justify-center items-center border border-gray-300 dark:border-stone-700 rounded-md lg:rounded-lg xl:rounded-xl lg:h-48 xl:h-52 xl:pb-3">
             <Image
               width={90}
               height={90}
               src={`https:${forecast.condition.icon}`}
               alt={forecast.condition.text}
-              className="w-20"
+              className="w-20 xl:w-24"
             />
-            <p className="text-lg font-medium opacity-80">Conditions will be</p>
-            <p className="text-xl leading-6 font-semibold">
+            <p className="text-lg font-medium opacity-80 xl:text-xl">
+              Conditions will be
+            </p>
+            <p className="text-xl leading-6 font-semibold xl:text-2xl xl:leading-10">
               {forecast.condition.text}
             </p>
           </div>
         </section>
 
-        <h2 className="mt-5 mb-4 text-xl font-semibold">Hourly Forecast</h2>
+        <h2 className="mt-5 mb-4 text-xl font-semibold mx-auto sm:max-w-[640px] lg:max-w-[1024px] xl:max-w-[1280px] ">
+          Hourly Forecast
+        </h2>
         <HourlyForecast
           hourlyForecastData={hourlyForecastData}
           currentTime={extractTime(formattedDateTime)}
