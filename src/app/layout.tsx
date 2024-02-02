@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-white dark:bg-black`}>
         <Providers>
           <Navbar />
-          <div className="h-[calc(100vh-48px)] flex flex-col justify-between">
+          <div className="min-h-[calc(100vh-49px)] flex flex-col justify-between">
             {children}
             <Footer />
           </div>

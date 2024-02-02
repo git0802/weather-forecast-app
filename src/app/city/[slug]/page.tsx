@@ -6,6 +6,7 @@ import { formatDateTime, formatDateOnly, extractTime } from "@/utils/time";
 import styles from "./page.module.css";
 import Image from "next/image";
 import SunMoonTime from "@/components/SunMoon";
+import HourlyForecast from "@/components/HourlyForecast";
 
 type WeatherData = {
   location: {
@@ -97,7 +98,7 @@ type WeatherData = {
 
 // data fetching
 
-async function getWeather(slug: string): Promise<WeatherData> {
+async function getWeather(slug: string) {
   noStore();
   const res = await fetch(
     `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${slug}&days=1&aqi=no&alerts=no`
@@ -198,17 +199,24 @@ export default async function Page({
                 <div className=" flex flex-col justify-between gap-3 mr-2">
                   <div className="flex ">
                     <div>
-                      <span className="text-4xl">{data.current.temp_c}</span>
+                      <span className="text-4xl font-medium">
+                        {data.current.temp_c}
+                      </span>
                       <span className="text-sm">&deg;C</span>
                     </div>
                     <div className="border mx-3  border-gray-300 dark:border-stone-700"></div>
                     <div>
-                      <span className="text-4xl">{data.current.temp_f}</span>
+                      <span
+                        className="text-4xl font-medium
+                      "
+                      >
+                        {data.current.temp_f}
+                      </span>
 
                       <span className="text-sm">&deg;F</span>
                     </div>
                   </div>
-                  <div className="text-2xl font-medium">
+                  <div className="text-2xl font-semibold">
                     {data.current.condition.text}
                   </div>
                 </div>
@@ -282,7 +290,7 @@ export default async function Page({
             <Image
               width={90}
               height={90}
-              className="w-14 invert-[0.25] dark:invert-"
+              className="w-14 invert-[0.25] dark:invert-0"
               src="/wind-speed.png"
               alt="wind speed icon"
             />
@@ -431,6 +439,10 @@ export default async function Page({
         </section>
 
         <h2 className="mt-5 mb-4 text-xl font-semibold">Hourly Forecast</h2>
+        <HourlyForecast
+          hourlyForecastData={hourlyForecastData}
+          currentTime={extractTime(formattedDateTime)}
+        />
       </main>
     </>
   );

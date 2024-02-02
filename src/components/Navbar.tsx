@@ -134,10 +134,7 @@ export default function Navbar() {
           {showResults && (
             <ul className="absolute mt-2 h-fit w-full rounded-md overflow-hidden bg-slate-100 dark:bg-zinc-800">
               {data.map((result, index) => (
-                <li
-                  key={result.id}
-                  onClick={() => console.log(`Clicked on ${result.name}`)} // Handle click on li as needed
-                >
+                <li key={result.id}>
                   <Link
                     href={`/city/${result.name}`}
                     ref={index === 0 ? firstResultLinkRef : null}

@@ -13,20 +13,20 @@ export default function ThemeSwitch() {
   if (!mounted)
     return <div className="min-h-4 mr-2 sm:mr-3 sm:h-5 lg:w-7"></div>;
 
-  if (resolvedTheme === "dark") {
+  if (resolvedTheme === "light") {
     return (
       <FiSun
         className=" min-h-4 mr-2 sm:mr-3 sm:h-5 lg:w-7"
-        onClick={() => setTheme("light")}
+        onClick={() => setTheme("dark")}
       />
     );
   }
 
-  if (resolvedTheme === "light") {
+  if (resolvedTheme === "dark") {
     return (
       <FiMoon
         className="  min-h-4 mr-2 sm:mr-3 sm:h-5 lg:w-7"
-        onClick={() => setTheme("dark")}
+        onClick={() => setTheme("light")}
       />
     );
   }
