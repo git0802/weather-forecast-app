@@ -1,5 +1,5 @@
 import { unstable_noStore as noStore } from "next/cache";
-
+import { notFound } from "next/navigation";
 import { API_KEY } from "@/utils/urls";
 import { formatDateTime, formatDateOnly, extractTime } from "@/utils/time";
 import siteMetadata from "@/utils/siteMetaData";
@@ -105,9 +105,7 @@ async function getWeather(slug: string) {
   );
 
   if (!res.ok) {
-    console.log(res);
-
-    throw new Error("Failed to fetch data");
+    notFound();
   }
 
   return res.json();
