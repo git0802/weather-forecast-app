@@ -2,6 +2,7 @@ import { unstable_noStore as noStore } from "next/cache";
 
 import { API_KEY } from "@/utils/urls";
 import { formatDateTime, formatDateOnly, extractTime } from "@/utils/time";
+import siteMetadata from "@/utils/siteMetaData";
 
 import Image from "next/image";
 import SunMoonTime from "@/components/SunMoon";
@@ -104,10 +105,69 @@ async function getWeather(slug: string) {
   );
 
   if (!res.ok) {
+    console.log(res);
+
     throw new Error("Failed to fetch data");
   }
 
   return res.json();
+}
+
+export async function generateMetadata({
+  params: { slug },
+}: {
+  params: { slug: string };
+}) {
+  const data = await getWeather(slug);
+
+  if (!data) {
+    return;
+  }
+  const formattedTime = new Date(data.current.last_updated).toISOString();
+
+  return {
+    title: `${data.location.name} | ${data.location.country} `,
+    description: `Get the latest weather forecast for ${data.location.name}, ${data.location.country}. Explore current conditions, daily and hourly forecasts, climate details, and more. Stay informed with accurate and up-to-date weather information.`,
+    keywords: [
+      "weather",
+      "weather forecast",
+      `${data.location.name} local weather`,
+      `${data.location.name} forecast`,
+      `${data.location.name} daily forecast`,
+      `${data.location.name} hourly forecast`,
+      `${data.location.name} climate`,
+      `${data.location.name} temperature`,
+      `${data.location.name} humidity`,
+      `${data.location.name} wind speed`,
+      `${data.location.name} precipitation`,
+      `${data.location.name} weather conditions`,
+      `${data.location.name} meteorology`,
+      `${data.location.name} weather updates`,
+      `${data.location.name} weather information`,
+      `${data.location.name} weather report`,
+      `${data.location.name} sunrise and sunset times`,
+    ],
+    openGraph: {
+      title: `${data.location.name} | ${data.location.country} `,
+      description: `Get the latest weather forecast for ${data.location.name}, ${data.location.country}. Explore current conditions, daily and hourly forecasts, climate details, and more. Stay informed with accurate and up-to-date weather information.`,
+
+      url: siteMetadata.siteUrl + "/city/" + slug,
+      siteName: siteMetadata.title,
+
+      locale: "en_US",
+      type: "article",
+      publishedTime: formattedTime,
+      modifiedTime: formattedTime,
+      images: [siteMetadata.socialBanner],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${data.location.name} | ${data.location.country} `,
+      description: `Get the latest weather forecast for ${data.location.name}, ${data.location.country}. Explore current conditions, daily and hourly forecasts, climate details, and more. Stay informed with accurate and up-to-date weather information.`,
+
+      images: [siteMetadata.socialBanner],
+    },
+  };
 }
 
 // Type for wind direction map
@@ -161,9 +221,23 @@ export default async function Page({
 
   // for google
   const formattedTime = new Date(data.current.last_updated).toISOString();
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: `${data.location.name} | ${data.location.country} `,
+    description: `Get the latest weather forecast for ${data.location.name}, ${data.location.country}. Explore current conditions, daily and hourly forecasts, climate details, and more. Stay informed with accurate and up-to-date weather information.`,
+
+    image: [siteMetadata.socialBanner],
+    datePublished: formattedTime,
+    dateModified: formattedTime,
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <main className="px-3 pt-2 ">
         <section className="w-full h-fit flex flex-col gap-2 mx-auto sm:max-w-[640px] lg:max-w-[1024px] lg:flex-row  lg:h-[29rem] xl:max-w-[1280px] xl:h-[30rem]">
           <div className="w-full h-fit p-4 border border-gray-300 dark:border-stone-700 rounded-md lg:h-full lg:w-[40rem] lg:p-5 xl:w-[56rem] lg:rounded-lg xl:rounded-xl">

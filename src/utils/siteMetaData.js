@@ -1,6 +1,5 @@
 const siteMetadata = {
   title: "Weather Forecast",
-  author: "Sujal",
   headerTitle: "Forecast Website",
   description:
     "Explore real-time weather updates and forecasts with this dynamic web application, meticulously crafted using the powerful 'next Js' react framework. Stay informed about current conditions, track upcoming changes, and plan your activities seamlessly. Whether you're a weather enthusiast or just looking for accurate predictions, this app provides a user-friendly experience for staying ahead of the elements.",
