@@ -19,45 +19,55 @@ interface SearchResult {
 }
 
 export default function Navbar() {
+  // Refs for managing focus on search input and clicking on the first result link
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const firstResultLinkRef = useRef<HTMLAnchorElement | null>(null);
 
+  // for managing search input value, search results, and whether to show results
   const [search, setSearch] = useState<string>("");
   const [data, setData] = useState<SearchResult[]>([]);
   const [showResults, setShowResults] = useState<boolean>(false);
 
+  // for handling key events
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key === "/") {
         e.preventDefault();
+        // Effect for handling key events (
         searchInputRef.current?.focus();
       } else if (e.key === "Enter" && data.length > 0) {
         e.preventDefault();
         // Check if firstResultLinkRef is not null before clicking
         if (firstResultLinkRef.current) {
+          // Click on the first result link when "Enter" key is pressed
           firstResultLinkRef.current.click();
         }
       }
     };
 
+    // Add event listener for keydown even
     window.addEventListener("keydown", handleKeyPress);
 
+    // Clean up the event listener when the component unmounts or data changes
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
   }, [data]);
 
+  //  for updating search input value and showing/hiding results
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
-    setShowResults(e.target.value.length >= 3); // Show results only when input length is >= 3
+    setShowResults(e.target.value.length >= 3); // Show results only when input length is >= 3 characters
   };
 
+  // for clearing the search input and hiding results
   const handleClearSearch = () => {
     setSearch("");
     setData([]); // Reset the data state to an empty array
     setShowResults(false); // Hide the search results
   };
 
+  // fetches data from the weather API based on the search input
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -69,13 +79,14 @@ export default function Navbar() {
           throw new Error("Failed to fetch data");
         }
 
-        const responseData: SearchResult[] = await res.json();
+        const responseData: SearchResult[] = await res.json(); // Parse and set the response data to the state
         setData(responseData);
       } catch (error) {
         console.error("Failed to fetch data", error);
       }
     };
 
+    // Fetch data only when the search input is not empty
     if (search.trim() !== "") {
       fetchData();
     }
@@ -125,13 +136,14 @@ export default function Navbar() {
                 className="w-full h-4"
                 onClick={() => {
                   if (data.length > 0 && firstResultLinkRef.current) {
-                    firstResultLinkRef.current.click();
+                    //  if there are search results and if the firstResultLinkRef is available
+                    firstResultLinkRef.current.click(); // Click on the first result link when the search icon is clicked
                   }
                 }}
               />
             </button>
           </div>
-          {showResults && (
+          {showResults && ( // when showResults is true
             <ul className="absolute mt-2 h-fit w-full rounded-md overflow-hidden bg-slate-100 dark:bg-zinc-800">
               {data.map((result, index) => (
                 <li key={result.id}>
