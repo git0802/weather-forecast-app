@@ -1,6 +1,4 @@
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
-
+import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -59,6 +57,20 @@ export default function RootLayout({
         name="google-site-verification"
         content="k3Mu_NRmonR916_W69sQXbvwCkKEQ8VczZ8IAWJpmBc"
       />
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+      />
+
+      <Script id="ga-script" strategy="lazyOnload">
+        {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+      page_path: window.location.pathname,
+    });
+        `}
+      </Script>
       <body className={`${inter.className} bg-white dark:bg-black`}>
         <Providers>
           <Navbar />
@@ -67,8 +79,6 @@ export default function RootLayout({
             <Footer />
           </div>
         </Providers>
-        <SpeedInsights />
-        <Analytics />
       </body>
     </html>
   );
