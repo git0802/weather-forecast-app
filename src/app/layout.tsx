@@ -55,6 +55,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <meta
+        name="google-site-verification"
+        content="k3Mu_NRmonR916_W69sQXbvwCkKEQ8VczZ8IAWJpmBc"
+      />
       <body className={`${inter.className} bg-white dark:bg-black`}>
         <Providers>
           <Navbar />
