@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://nextforecast.vercel.app
+
+# Sitemaps
+Sitemap: https://nextforecast.vercel.app/sitemap.xml
