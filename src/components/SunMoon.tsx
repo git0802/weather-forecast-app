@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+// defining the structure of astro object
 interface Astro {
   sunrise: string;
   sunset: string;
@@ -8,14 +9,17 @@ interface Astro {
   moon_phase: string;
 }
 
+// defining the structure of moon phase images object
 interface MoonPhaseImages {
   [key: string]: string;
 }
 
+// defining props received by SunMoonTime component
 interface SunMoonTimeProps {
-  astro: Astro;
+  astro: Astro; // Astro object containing sun and moon related data
 }
 
+// Object containing moon phase images mapped to their respective phases
 const moonPhaseImages: MoonPhaseImages = {
   "New Moon": "new-moon.png",
   "Waxing Crescent": "waxing-crescent-moon.png",
@@ -29,24 +33,29 @@ const moonPhaseImages: MoonPhaseImages = {
 };
 
 export default function SunMoonTime({ astro }: SunMoonTimeProps) {
-  // Function to calculate time difference , for sun
+  // Function to calculate time difference for sunrise to sunset
   function calculateSunTotalTimeDifference(start: string, end: string): string {
     if (start === "No sunrise" || end === "No sunset") {
-      return "..                 ";
+      // If no sunrise or sunset data is available, return this
+      return "..";
     }
 
-    const startTime = new Date(`2000-01-01 ${start}`).getTime();
-    const endTime = new Date(`2000-01-01 ${end}`).getTime();
+    // Calculate time difference between sunrise and sunset
+    const startTime = new Date(`2000-01-01 ${start}`).getTime(); // Get the start time in milliseconds
+    const endTime = new Date(`2000-01-01 ${end}`).getTime(); // Get the end time in milliseconds
 
-    const timeDifference = endTime - startTime;
-    const hours = Math.floor(timeDifference / 3600000);
-    const minutes = Math.floor((timeDifference % 3600000) / 60000);
+    const timeDifference = endTime - startTime; // Calculate the time difference in milliseconds
+    const hours = Math.floor(timeDifference / 3600000); // Convert milliseconds to hours
+    const minutes = Math.floor((timeDifference % 3600000) / 60000); // Convert the remaining milliseconds to minutes
 
+    // Return a formatted string representing the total time difference in hours and minutes
+    // The `padStart` method is used to ensure that both hours and minutes are two digits long
     return `${hours.toString().padStart(2, "0")} hr ${minutes
       .toString()
       .padStart(2, "0")} min`;
   }
 
+  // Function to calculate time difference for moonrise to moonset
   function calculateMoonTotalTimeDifference(
     moonrise: string,
     moonset: string
@@ -64,10 +73,10 @@ export default function SunMoonTime({ astro }: SunMoonTimeProps) {
 
     // Check if moonset today is before moonrise today
     if (moonsetToday < moonriseToday) {
-      // Moonset today is on the next day
+      // Moonset today is on the next day, calculate total time difference accordingly
       totalMoonTime = moonsetTomorrow.getTime() - moonriseToday.getTime();
     } else {
-      // Moonrise and moonset are on the same day
+      // Moonrise and moonset are on the same day, calculate total time difference accordingly
       totalMoonTime = moonsetToday.getTime() - moonriseToday.getTime();
     }
 
@@ -79,6 +88,7 @@ export default function SunMoonTime({ astro }: SunMoonTimeProps) {
       .padStart(2, "0")} min`;
   }
 
+  // passing the data to this functions
   const sunriseToSunset = calculateSunTotalTimeDifference(
     astro.sunrise,
     astro.sunset

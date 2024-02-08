@@ -205,7 +205,7 @@ export default async function Page({
 }: {
   params: { slug: string };
 }) {
-  const data: WeatherData = await getWeather(slug);
+  const data: WeatherData = await getWeather(slug); // forecast data
 
   const formattedDateTime = formatDateTime(data.location.localtime);
 

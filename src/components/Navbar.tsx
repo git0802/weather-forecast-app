@@ -8,6 +8,7 @@ import { TfiClose, TfiSearch } from "react-icons/tfi";
 import { CiLocationArrow1 } from "react-icons/ci";
 import { useState, useEffect, useRef } from "react";
 
+// interface for Search Result
 interface SearchResult {
   country: string;
   id: number;
@@ -86,8 +87,8 @@ export default function Navbar() {
       }
     };
 
-    // Fetch data only when the search input is not empty
-    if (search.trim() !== "") {
+    // Check if the trimmed search input has at least three characters, then fetch the data
+    if (search.trim().length >= 3) {
       fetchData();
     }
   }, [search]);
@@ -114,7 +115,9 @@ export default function Navbar() {
               value={search}
               onChange={handleInputChange}
               onKeyUp={(e) => {
+                // Check if the released key is Backspace and the search input is empty
                 if (e.key === "Backspace" && search === "") {
+                  // If true, hide the search results
                   setShowResults(false);
                 }
               }}

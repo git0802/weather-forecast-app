@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { extractTime } from "@/utils/time";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 type Hour = {
   time: string;
@@ -15,7 +15,6 @@ type Hour = {
   wind_kph: number;
   wind_mph: number;
   wind_degree: number;
-  // ... other properties
 };
 
 type HourlyForecastProps = {
@@ -27,41 +26,50 @@ export default function HourlyForecast({
   hourlyForecastData,
   currentTime,
 }: HourlyForecastProps) {
-  const isAM = currentTime.includes("AM");
-  const currentHour = parseInt(currentTime.split(":")[0]);
+  const isAM = currentTime.includes("AM"); // Determine whether the current time is in AM or PM
 
-  // Find the index of the active hour
+  const currentHour = parseInt(currentTime.split(":")[0]); // Extract the hour from the current time
+
+  // Find the Card Index of the active hour in the forecast data
   const activeHourIndex = hourlyForecastData.findIndex((hour) => {
-    const hourTime = extractTime(hour.time);
-    const forecastHour = parseInt(hourTime.split(":")[0]);
-    const forecastIsAM = hourTime.includes("AM");
+    const hourTime = extractTime(hour.time); // Extract the hour from the forecast data
+    const forecastHour = parseInt(hourTime.split(":")[0]); // Extract the hour part from the time string
+    const forecastIsAM = hourTime.includes("AM"); // Check if the forecast time is in AM
+
+    // Compare the extracted hour and AM/PM of the forecast data with the current hour and AM/PM
     return currentHour === forecastHour && isAM === forecastIsAM;
   });
 
   // Ref for the container element
   const containerRef = useRef<HTMLDivElement | null>(null);
 
+  // Scroll to the active hour on initial load
   useEffect(() => {
-    // Scroll to the active hour on initial load
     const container = containerRef.current;
 
+    // if the container exists and the active hour index is valid
     if (container && activeHourIndex !== -1) {
-      const cardWidth = 184; // Adjust this based on the actual width of your cards including gap
-      const containerWidth = container.offsetWidth;
+      const cardWidth = 184; // Width of only one card
+      const containerWidth = container.offsetWidth; // whole width of Container
+
+      // Calculate the scroll position to center the active hour card
+      // eg: 6 * 184 - 1280 / 2 + 184 / 2  , 1104 - 640 + 92 , 456 + 92 = 556
+      // divide by / 2 bec of we want it in center
       const scrollPosition =
         activeHourIndex * cardWidth - containerWidth / 2 + cardWidth / 2;
 
+      // Scroll to the calculated position with smooth animation
       container.scrollTo({
-        left: scrollPosition,
-        behavior: "smooth", // Add smooth scrolling animation
+        left: scrollPosition, // scroll to the left
+        behavior: "smooth", // smooth scrolling animation
       });
     }
-  }, [activeHourIndex]);
+  }, [activeHourIndex]); // Trigger whenever the active hour index changes
 
   return (
     <div
       className="mt-4 border-x rounded-md lg:rounded-lg xl:rounded-xl border-gray-300 dark:border-stone-700 w-full h-auto overflow-x-auto whitespace-nowrap pb-2 scrollbar scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100  dark:scrollbar-thumb-stone-400 dark:scrollbar-track-stone-800  sm:max-w-[640px] sm:mx-auto lg:max-w-[1024px] xl:max-w-[1280px] "
-      ref={containerRef}
+      ref={containerRef} // ref for scrolling to the current hour card
     >
       <div className="inline-flex w-auto gap-2 ">
         {hourlyForecastData.map((hour, index) => {

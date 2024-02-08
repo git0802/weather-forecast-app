@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Weather Forecast Website
 
-## Getting Started
+Welcome to the Weather Forecast website! This web application provides real-time weather data for cities worldwide. You can easily find the current weather conditions, hourly forecasts, and more for any city you search for.
 
-First, run the development server:
+### Web Link:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[Weather Forecast](https://nextforecast.vercel.app)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Technologies Used:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Frontend: Next.js, Tailwind CSS
+- Backend: WeatherAPI.com (third-party API)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Features:
 
-## Learn More
+- User-friendly design with light and dark mode options
+- Real-time weather forecast with single city search
+- Quick links for finding your city
+- Temperature units in both Fahrenheit and Celsius
 
-To learn more about Next.js, take a look at the following resources:
+### Current Conditions:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Current temperature
+- Feels like temperature
+- Sunrise and sunset times
+- Moonrise and moonset times
+- Current moon phase
+- Day or night indicator
+- Humidity and cloud percentage
+- Wind speed in kilometers per hour and miles per hour
+- Wind direction in both text (e.g., "southwest") and degrees (e.g., 220°)
+- Visibility in kilometers and miles
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Forecast for Current Day:
 
-## Deploy on Vercel
+- Maximum, minimum, and average temperature
+- Maximum wind speed
+- Average visibility
+- Average humidity
+- Probability of rain (yes or no, and percentage)
+- Probability of snow (yes or no, and percentage)
+- Current day conditions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Hourly Forecast for Current Day:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Hourly temperature
+- Hourly weather conditions
+- Hourly humidity
+- Hourly wind speed
+- Hourly time
+
+Enjoy exploring the weather forecast for your city and stay informed about the current and upcoming weather conditions!
