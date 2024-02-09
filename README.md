@@ -4,11 +4,11 @@ Welcome to the Weather Forecast website! This web application provides real-time
 
 ### Web Link:
 
-[Weather Forecast](https://nextforecast.vercel.app)
+[nextforecast.vercel.app](https://nextforecast.vercel.app)
 
 ### Technologies Used:
 
-- Frontend: Next.js, Tailwind CSS
+- Frontend: Next.js 14, React, TypeScript, HTML, Tailwind CSS.
 - Backend: WeatherAPI.com (third-party API)
 
 ### Features:
