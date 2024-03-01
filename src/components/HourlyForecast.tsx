@@ -85,7 +85,7 @@ export default function HourlyForecast({
               } `}
               key={index}
             >
-              <Image
+              <img
                 width={80}
                 height={80}
                 src={`https:${hour.condition.icon}`}
