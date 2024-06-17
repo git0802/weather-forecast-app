@@ -105,7 +105,7 @@ export default function HourlyForecast({
                 </p>
               </div>
               <div
-                className={`mt-2 text-base  ${
+                className={`mt-2 min-h-[64px] break-words whitespace-normal text-base leading-5 overflow-hidden ${
                   index === activeHourIndex
                     ? "font-medium opacity-100"
                     : "opacity-90"
@@ -114,7 +114,7 @@ export default function HourlyForecast({
                 {hour.condition.text}
               </div>
 
-              <div className="text-sm flex items-center gap-1 mt-12">
+              <div className="text-sm flex items-center gap-1 mt-2">
                 <Image
                   width={16}
                   height={16}
