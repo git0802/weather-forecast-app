@@ -2,8 +2,7 @@ import { unstable_noStore as noStore } from "next/cache";
 import { notFound } from "next/navigation";
 import { API_KEY } from "@/utils/urls";
 import { formatDateTime, formatDateOnly, extractTime } from "@/utils/time";
-import siteMetadata from "@/utils/siteMetaData";
-
+import { siteConfig } from "@/config/site";
 import Image from "next/image";
 import SunMoonTime from "@/components/SunMoon";
 import HourlyForecast from "@/components/HourlyForecast";
@@ -111,16 +110,12 @@ async function getWeather(slug: string) {
   return res.json();
 }
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ slug: string }>;
-  }
-) {
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
+}) {
   const params = await props.params;
 
-  const {
-    slug
-  } = params;
+  const { slug } = params;
 
   const data = await getWeather(slug);
 
@@ -154,22 +149,19 @@ export async function generateMetadata(
     openGraph: {
       title: `${data.location.name} | ${data.location.country} `,
       description: `Get the latest weather forecast for ${data.location.name}, ${data.location.country}. Explore current conditions, daily and hourly forecasts, climate details, and more. Stay informed with accurate and up-to-date weather information.`,
-
-      url: siteMetadata.siteUrl + "/city/" + slug,
-      siteName: siteMetadata.title,
-
+      url: siteConfig.url + "/city/" + slug,
+      siteName: siteConfig.shortName,
       locale: "en_US",
       type: "article",
       publishedTime: formattedTime,
       modifiedTime: formattedTime,
-      images: [siteMetadata.socialBanner],
+      images: [siteConfig.ogImage],
     },
     twitter: {
       card: "summary_large_image",
       title: `${data.location.name} | ${data.location.country} `,
       description: `Get the latest weather forecast for ${data.location.name}, ${data.location.country}. Explore current conditions, daily and hourly forecasts, climate details, and more. Stay informed with accurate and up-to-date weather information.`,
-
-      images: [siteMetadata.socialBanner],
+      images: [siteConfig.ogImage],
     },
   };
 }
@@ -206,16 +198,12 @@ function getFullWindDirection(abbreviation: string): string {
 
 // page
 
-export default async function Page(
-  props: {
-    params: Promise<{ slug: string }>;
-  }
-) {
+export default async function Page(props: {
+  params: Promise<{ slug: string }>;
+}) {
   const params = await props.params;
 
-  const {
-    slug
-  } = params;
+  const { slug } = params;
 
   const data: WeatherData = await getWeather(slug); // forecast data
 
@@ -236,8 +224,7 @@ export default async function Page(
     "@type": "NewsArticle",
     headline: `${data.location.name} | ${data.location.country} `,
     description: `Get the latest weather forecast for ${data.location.name}, ${data.location.country}. Explore current conditions, daily and hourly forecasts, climate details, and more. Stay informed with accurate and up-to-date weather information.`,
-
-    image: [siteMetadata.socialBanner],
+    images: [siteConfig.ogImage],
     datePublished: formattedTime,
     dateModified: formattedTime,
   };
