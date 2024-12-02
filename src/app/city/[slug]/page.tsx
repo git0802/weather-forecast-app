@@ -260,7 +260,8 @@ export default async function Page(props: {
               </div>
 
               <div className="flex my-8 items-center gap-4 sm:my-10 xl:gap-7">
-                <img
+                <Image
+                  unoptimized
                   width={100}
                   height={100}
                   src={`https:${data.current.condition.icon}`}
@@ -502,7 +503,8 @@ export default async function Page(props: {
           </div>
 
           <div className="h-44  flex pb-6 flex-col justify-center items-center border border-gray-300 dark:border-stone-700 rounded-md lg:rounded-lg xl:rounded-xl lg:h-48 xl:h-52 xl:pb-3">
-            <img
+            <Image
+              unoptimized
               width={90}
               height={90}
               src={`https:${forecast.condition.icon}`}

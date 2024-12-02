@@ -170,7 +170,8 @@ export default function SunMoonTime({ astro }: SunMoonTimeProps) {
             Moon phase
           </p>
           <div className="flex items-center mt-3 ">
-            <img
+            <Image
+              unoptimized
               className="ml-1 w-[70px] lg:w-20"
               width={80}
               height={80}
