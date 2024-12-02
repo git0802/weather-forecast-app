@@ -111,11 +111,17 @@ async function getWeather(slug: string) {
   return res.json();
 }
 
-export async function generateMetadata({
-  params: { slug },
-}: {
-  params: { slug: string };
-}) {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: string }>;
+  }
+) {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const data = await getWeather(slug);
 
   if (!data) {
@@ -200,11 +206,17 @@ function getFullWindDirection(abbreviation: string): string {
 
 // page
 
-export default async function Page({
-  params: { slug },
-}: {
-  params: { slug: string };
-}) {
+export default async function Page(
+  props: {
+    params: Promise<{ slug: string }>;
+  }
+) {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const data: WeatherData = await getWeather(slug); // forecast data
 
   const formattedDateTime = formatDateTime(data.location.localtime);
