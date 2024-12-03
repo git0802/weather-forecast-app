@@ -1,7 +1,7 @@
 export const siteConfig = {
   shortName: "Next Forecast",
   name: "Simple Weather Forecast",
-  url: "https://nonex.vercel.app",
+  url: "https://nextforecast.vercel.app",
   ogImage:
     "https://res.cloudinary.com/drzcgtzx8/image/upload/v1733135760/portfolio/next-forecast/jzbkihwendf3u0altec5.png",
   description:
