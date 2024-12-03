@@ -2,9 +2,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Providers } from "./providers";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { siteConfig } from "@/config/site";
+import ThemeProvider from "@/theme/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -54,13 +54,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} bg-white dark:bg-black`}>
-        <Providers>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Navbar />
           <div className="min-h-[calc(100vh-49px)] flex flex-col justify-between">
             {children}
             <Footer />
           </div>
-        </Providers>
+        </ThemeProvider>
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
     </html>
