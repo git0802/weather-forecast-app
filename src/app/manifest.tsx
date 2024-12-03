@@ -1,6 +1,7 @@
 import { siteConfig } from "@/config/site";
+import { MetadataRoute } from "next";
 
-export default function manifest() {
+export default function manifest(): MetadataRoute.Manifest {
   return {
     name: siteConfig.name,
     short_name: siteConfig.shortName,
