@@ -10,7 +10,7 @@ export const siteConfig = {
     gmail: "sujalvanjaredev@gmail.com",
     github: "https://github.com/Sujal-Vanjare",
     personalSite: "https://sujalvanjare.vercel.app",
-    twitter: "https://twitter.com/sujal169",
+    twitter: "https://x.com/sujal_160",
     author: "Sujal",
   },
 };
