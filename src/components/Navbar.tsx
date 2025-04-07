@@ -109,7 +109,7 @@ export default function Navbar() {
         <div className="relative">
           <div className="w-52 h-10 rounded-md overflow-hidden flex justify-between items-center bg-gray-100 dark:bg-neutral-800  sm:w-72 lg:w-96">
             <input
-              className="h-full w-32 outline-none rounded-md bg-inherit text-xs p-2 sm:w-52 sm:text-sm lg:w-[306px]"
+              className="h-full w-32 outline-hidden rounded-md bg-inherit text-xs p-2 sm:w-52 sm:text-sm lg:w-[306px]"
               type="text"
               placeholder="Search for location"
               value={search}
