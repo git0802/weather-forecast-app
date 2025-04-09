@@ -29,7 +29,7 @@ export default function Loading() {
         <h2 className="mt-5 mb-4 text-xl font-semibold mx-auto sm:max-w-[640px] lg:max-w-[1024px] xl:max-w-[1280px] ">
           Hourly Forecast{" "}
         </h2>
-        <section className="mt-4  w-full h-auto overflow-x-auto whitespace-nowrap pb-2 scrollbar scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100  dark:scrollbar-thumb-stone-400 dark:scrollbar-track-stone-800  sm:max-w-[640px] sm:mx-auto lg:max-w-[1024px] xl:max-w-[1280px] ">
+        <section className="mt-4  w-full h-auto overflow-x-auto whitespace-nowrap pb-2 sm:max-w-[640px] sm:mx-auto lg:max-w-[1024px] xl:max-w-[1280px] ">
           <div className="inline-flex w-auto gap-2 ">
             <div className="w-44 h-80 bg-gray-300 dark:bg-stone-800 border rounded-md lg:rounded-lg xl:rounded-xl border-gray-300 dark:border-stone-700 "></div>
             <div className="w-44 h-80 bg-gray-300 dark:bg-stone-800 border rounded-md lg:rounded-lg xl:rounded-xl border-gray-300 dark:border-stone-700 "></div>
