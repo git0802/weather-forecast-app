@@ -124,7 +124,7 @@ export default function Navbar() {
               ref={searchInputRef}
             />
             {search && ( // Only render the button if the search is not empty
-              <button className="w-[38px] h-[38px] bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-800 hover:bg-gray-300  transition-colors ease-in-out duration-300 rounded-md flex items-center justify-center">
+              <button className="cursor-pointer w-[38px] h-[38px] bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-800 hover:bg-gray-300  transition-colors ease-in-out duration-300 rounded-md flex items-center justify-center">
                 <TfiClose
                   className="w-full h-4"
                   onClick={() => {
@@ -134,7 +134,7 @@ export default function Navbar() {
               </button>
             )}
 
-            <button className=" w-[38px] h-[38px] bg-blue-300 dark:bg-blue-500 hover:bg-blue-400 dark:hover:bg-blue-600  transition-colors ease-in-out duration-300 rounded-md flex items-center justify-center">
+            <button className="cursor-pointer w-[38px] h-[38px] bg-blue-300 dark:bg-blue-500 hover:bg-blue-400 dark:hover:bg-blue-600  transition-colors ease-in-out duration-300 rounded-md flex items-center justify-center">
               <TfiSearch
                 className="w-full h-4"
                 onClick={() => {
