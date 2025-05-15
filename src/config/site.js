@@ -7,10 +7,9 @@ export const siteConfig = {
   description:
     "Real-time weather forecasting for every location. Current weather, hourly weather throughout the day.",
   links: {
-    gmail: "sujalvanjaredev@gmail.com",
-    github: "https://github.com/Sujal-Vanjare",
-    personalSite: "https://sujalvanjare.vercel.app",
-    twitter: "https://x.com/sujal_160",
-    author: "Sujal",
+    gmail: "t2k20802@gmail.com",
+    github: "https://github.com/git0802",
+    personalSite: "https://lovebee.me",
+    author: "gungxu",
   },
 };
