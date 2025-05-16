@@ -110,6 +110,20 @@ async function getWeather(slug: string) {
   return res.json();
 }
 
+async function getLocationImage(slug: string) {
+  const res = await fetch(
+    `https://api.unsplash.com/search/photos?query=${slug}&client_id=${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}&per_page=1`
+  );
+
+  if (!res.ok) {
+    notFound();
+  }
+
+  const data = await res.json();
+
+  return data.results[0].urls.regular;
+}
+
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }) {
@@ -206,6 +220,7 @@ export default async function Page(props: {
   const { slug } = params;
 
   const data: WeatherData = await getWeather(slug); // forecast data
+  const locationImage = await getLocationImage(slug); // location image
 
   const formattedDateTime = formatDateTime(data.location.localtime);
 
@@ -237,8 +252,16 @@ export default async function Page(props: {
       />
       <main className="px-3 pt-2 ">
         <section className="w-full h-fit flex flex-col gap-2 mx-auto sm:max-w-[640px] lg:max-w-[1024px] lg:flex-row  lg:h-[29rem] xl:max-w-[1280px] xl:h-[30rem]">
-          <div className="w-full h-fit p-4 border border-gray-300 dark:border-stone-700 rounded-md lg:h-full lg:w-[40rem] lg:p-5 xl:w-[56rem] lg:rounded-lg xl:rounded-xl">
-            <div>
+          <div
+            className="w-full h-fit p-4 border border-gray-300 dark:border-stone-700 rounded-md lg:h-full lg:w-[40rem] lg:p-5 xl:w-[56rem] lg:rounded-lg xl:rounded-xl "
+            style={{
+              backgroundImage: `url(${locationImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <div className="w-full h-full p-6 sm:p-8 flex flex-col bg-white/5 backdrop-blur-sm rounded-md lg:rounded-lg xl:rounded-xl">
               <h2 className="text-xl font-semibold leading-8 sm:text-3xl xl:text-4xl ">
                 {data.location.name}
               </h2>
