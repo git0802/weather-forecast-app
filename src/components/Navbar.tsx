@@ -94,20 +94,20 @@ export default function Navbar() {
   }, [search]);
 
   return (
-    <div className=" z-20 sticky top-0 h-12 bg-white dark:bg-black border-b-[1px] border-gray-300 dark:border-stone-700 px-3 ">
+    <div className=" z-20 sticky top-0 h-12  bg-teal-800 px-3 ">
       <nav className="h-full m-auto flex items-center justify-between  sm:max-w-[640px] lg:max-w-[1024px] xl:max-w-[1280px]">
         <div className="w-full flex justify-between items-center">
           <Link
             href="/"
-            className="text-sm font-bold leading-4 sm:text-base  lg:text-xl lg:font-extrabold"
+            className="text-sm text-white font-bold leading-4 sm:text-base lg:text-xl lg:font-extrabold"
           >
             Weather Forecast
           </Link>
-          <ThemeSwitch />
+          {/* <ThemeSwitch /> */}
         </div>
 
         <div className="relative">
-          <div className="w-52 h-10 rounded-md overflow-hidden flex justify-between items-center bg-gray-100 dark:bg-neutral-800  sm:w-72 lg:w-96">
+          <div className="w-52 h-10 rounded-md overflow-hidden flex justify-between items-center bg-gray-100  sm:w-72 lg:w-96 p-2">
             <input
               className="h-full w-32 outline-hidden rounded-md bg-inherit text-xs p-2 sm:w-52 sm:text-sm lg:w-[306px]"
               type="text"
@@ -124,7 +124,7 @@ export default function Navbar() {
               ref={searchInputRef}
             />
             {search && ( // Only render the button if the search is not empty
-              <button className="cursor-pointer w-[38px] h-[38px] bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-800 hover:bg-gray-300  transition-colors ease-in-out duration-300 rounded-md flex items-center justify-center">
+              <button className="cursor-pointer w-8 h-8 bg-teal-100 ml-4 rounded-ful hover:bg-teal-500 rounded-full  transition-colors ease-in-out duration-300 flex items-center justify-center">
                 <TfiClose
                   className="w-full h-4"
                   onClick={() => {
@@ -134,7 +134,7 @@ export default function Navbar() {
               </button>
             )}
 
-            <button className="cursor-pointer w-[38px] h-[38px] bg-blue-300 dark:bg-blue-500 hover:bg-blue-400 dark:hover:bg-blue-600  transition-colors ease-in-out duration-300 rounded-md flex items-center justify-center">
+            <button className="cursor-pointer w-8 h-8 bg-teal-300 rounded-full transition-colors ease-in-out duration-300 flex items-center justify-center">
               <TfiSearch
                 className="w-full h-4"
                 onClick={() => {
@@ -147,13 +147,13 @@ export default function Navbar() {
             </button>
           </div>
           {showResults && ( // when showResults is true
-            <ul className="absolute mt-2 h-fit w-full rounded-md overflow-hidden bg-slate-100 dark:bg-zinc-800">
+            <ul className="absolute mt-2 h-fit w-full rounded-md overflow-hidden bg-teal-50">
               {data.map((result, index) => (
                 <li key={result.id}>
                   <Link
                     href={`/city/${result.name}`}
                     ref={index === 0 ? firstResultLinkRef : null}
-                    className="px-3 py-2  flex justify-between items-center border-b-[1px] border-gray-300 dark:border-stone-600  hover:bg-slate-200 dark:hover:bg-zinc-900 transition-colors ease-in-out duration-300 "
+                    className="px-3 py-2  flex justify-between items-center border-b-[1px] border-teal-300 dark:border-teal-600  hover:bg-teal-200 dark:hover:bg-teal-900 transition-colors ease-in-out duration-300 "
                     onClick={() => {
                       handleClearSearch(); // Clear the search bar and hide search options
                     }}

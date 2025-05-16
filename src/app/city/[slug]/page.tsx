@@ -250,10 +250,10 @@ export default async function Page(props: {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="px-3 pt-2 ">
-        <section className="w-full h-fit flex flex-col gap-2 mx-auto sm:max-w-[640px] lg:max-w-[1024px] lg:flex-row  lg:h-[29rem] xl:max-w-[1280px] xl:h-[30rem]">
+      <main className="px-3 pt-2 text-slate-600">
+        <section className="w-full h-fit flex flex-col gap-2 mx-auto sm:max-w-[640px] lg:max-w-[1024px] lg:flex-row  lg:h-[29rem] xl:max-w-[1280px] xl:h-[30rem] ">
           <div
-            className="w-full h-fit p-4 border border-gray-300 dark:border-stone-700 rounded-md lg:h-full lg:w-[40rem] lg:p-5 xl:w-[56rem] lg:rounded-lg xl:rounded-xl "
+            className="w-full h-fit p-4 border border-teal-600 rounded-md lg:h-full lg:w-[40rem] lg:p-5 xl:w-[56rem] lg:rounded-lg xl:rounded-xl text-white "
             style={{
               backgroundImage: `url(${locationImage})`,
               backgroundSize: "cover",
@@ -262,7 +262,7 @@ export default async function Page(props: {
             }}
           >
             <div className="w-full h-full p-6 sm:p-8 flex flex-col bg-white/5 backdrop-blur-sm rounded-md lg:rounded-lg xl:rounded-xl">
-              <h2 className="text-xl font-semibold leading-8 sm:text-3xl xl:text-4xl ">
+              <h2 className="text-xl font-semibold leading-8 sm:text-3xl xl:text-4xl">
                 {data.location.name}
               </h2>
               <div className="text-sm font-normal leading-tight opacity-90 sm:text-base sm:mt-1 xl:text-lg xl:mt-2">
@@ -302,7 +302,7 @@ export default async function Page(props: {
                         &deg;C
                       </span>
                     </div>
-                    <div className="border mx-3 border-gray-300 dark:border-stone-700 sm:mx-5 xl:mx-6"></div>
+                    <div className="border mx-3 border-white sm:mx-5 xl:mx-6"></div>
                     <div>
                       <span className="text-4xl font-medium sm:text-5xl  xl:text-6xl">
                         {data.current.temp_f}
@@ -325,14 +325,14 @@ export default async function Page(props: {
                   <span className="opacity-85">{data.current.feelslike_c}</span>
                   <span className="text-xs font-light ml-1">&deg;C</span>
                 </p>
-                <div className="border my-1 mx-1  border-gray-300 dark:border-stone-700"></div>
+                <div className="border my-1 mx-1  border-white dark:border-white"></div>
                 <p>
                   <span className="opacity-85">{data.current.feelslike_f}</span>
 
                   <span className="text-xs font-light ml-1">&deg;F</span>
                 </p>
               </div>
-              <div className="mt-6 text-[11px] font-light opacity-85 lg:mt-10 ">
+              <div className="text-[11px] font-light opacity-85 mt-4 flex justify-end">
                 <span>Last Updated : </span>
                 <span> {lastUpdateTime}</span>
               </div>
@@ -341,7 +341,7 @@ export default async function Page(props: {
           <SunMoonTime astro={astro} />
         </section>
         <section className="grid grid-cols-2 w-full h-fit gap-2 mt-2 sm:mx-auto sm:max-w-[640px] lg:max-w-[1024px]  sm:grid-cols-3 lg:grid-cols-6 xl:max-w-[1280px]">
-          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl">
+          <div className="h-52 border  border-teal-600 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl bg-white/5 backdrop-blur-sm">
             <Image
               width={90}
               height={90}
@@ -357,7 +357,7 @@ export default async function Page(props: {
               </span>
             </p>
           </div>
-          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl">
+          <div className="h-52 border  border-teal-600 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl bg-white/5 backdrop-blur-sm">
             <Image
               width={90}
               height={90}
@@ -370,7 +370,7 @@ export default async function Page(props: {
               <span className="font-medium">{data.current.humidity}&#37;</span>
             </p>
           </div>
-          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl">
+          <div className="h-52 border  border-teal-600 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl bg-white/5 backdrop-blur-sm">
             <Image
               width={90}
               height={90}
@@ -383,7 +383,7 @@ export default async function Page(props: {
               <span className="font-medium">{data.current.cloud}&#37;</span>
             </p>
           </div>
-          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl">
+          <div className="h-52 border  border-teal-600 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl bg-white/5 backdrop-blur-sm">
             <Image
               width={90}
               height={90}
@@ -401,7 +401,7 @@ export default async function Page(props: {
               </span>
             </div>
           </div>
-          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl">
+          <div className="h-52 border  border-teal-600 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl bg-white/5 backdrop-blur-sm">
             <Image
               width={90}
               height={90}
@@ -424,7 +424,7 @@ export default async function Page(props: {
               </div>
             </div>
           </div>
-          <div className="h-52 border  border-gray-300 dark:border-stone-700 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl">
+          <div className="h-52 border  border-teal-600 rounded-md flex flex-col items-center justify-center gap-3 lg:h-44 lg:rounded-lg xl:rounded-xl bg-white/5 backdrop-blur-sm">
             <Image
               width={90}
               height={90}
@@ -441,18 +441,18 @@ export default async function Page(props: {
             </div>
           </div>
         </section>
-        <h2 className="mt-5 mb-4 font-semibold sm:mx-auto sm:max-w-[640px] lg:max-w-[1024px] xl:max-w-[1280px] ">
+        <h2 className="mt-5 mb-4  sm:mx-auto sm:max-w-[640px] lg:max-w-[1024px] xl:max-w-[1280px] text-teal-800 font-bold">
           <span className="text-xl ">Forecast </span>
           <span className="text-base  opacity-80"> for {forecastDate}</span>
         </h2>
         <section className="grid grid-cols-1 gap-2 h-fit sm:mx-auto sm:max-w-[640px] sm:grid-cols-2 lg:max-w-[1024px] lg:grid-cols-4 xl:max-w-[1280px]">
-          <div className="h-44 text-sm font-medium flex gap-3 flex-col justify-center items-center border border-gray-300 dark:border-stone-700 rounded-md lg:rounded-lg xl:rounded-xl lg:h-48 xl:text-base xl:h-52">
+          <div className="h-44 text-sm font-medium flex gap-3 flex-col justify-center items-center border border-teal-600 rounded-md lg:rounded-lg xl:rounded-xl lg:h-48 xl:text-base xl:h-52 bg-white/5 backdrop-blur-sm">
             <div>
               <span className="opacity-80">Max temp today &#58; </span>
               <span className="ml-1">
                 <span> {forecast.maxtemp_c} </span>
                 <span className="text-xs">&deg;C</span>
-                <span className=" border border-gray-300 dark:border-stone-700 mr-1 ml-2"></span>
+                <span className=" border border-white mr-1 ml-2"></span>
                 <span> {forecast.maxtemp_f} </span>
                 <span className="text-xs">&deg;F</span>
               </span>
@@ -462,7 +462,7 @@ export default async function Page(props: {
               <span className="ml-1">
                 <span> {forecast.mintemp_c} </span>
                 <span className="text-xs">&deg;C</span>
-                <span className=" border border-gray-300 dark:border-stone-700 mr-1 ml-2"></span>
+                <span className=" border border-white mr-1 ml-2"></span>
                 <span> {forecast.mintemp_f} </span>
                 <span className="text-xs">&deg;F</span>
               </span>
@@ -472,13 +472,13 @@ export default async function Page(props: {
               <span className="ml-1">
                 <span> {forecast.avgtemp_c} </span>
                 <span className="text-xs">&deg;C</span>
-                <span className=" border border-gray-300 dark:border-stone-700 mr-1 ml-2"></span>
+                <span className=" border border-white mr-1 ml-2"></span>
                 <span> {forecast.avgtemp_f} </span>
                 <span className="text-xs">&deg;F</span>
               </span>
             </div>
           </div>
-          <div className="h-44 text-sm font-medium flex gap-3 flex-col justify-center items-center border border-gray-300 dark:border-stone-700 rounded-md lg:rounded-lg xl:rounded-xl lg:h-48 xl:text-base xl:h-52">
+          <div className="h-44 text-sm font-medium flex gap-3 flex-col justify-center items-center border border-teal-600 rounded-md lg:rounded-lg xl:rounded-xl lg:h-48 xl:text-base xl:h-52 bg-white/5 backdrop-blur-sm">
             <div className="flex items-center gap-3">
               <span className="opacity-80">Max wind speed &#58; </span>
               <span className="text-xs ">
@@ -498,7 +498,7 @@ export default async function Page(props: {
               <span className="text-xs">{forecast.avghumidity} &#37;</span>
             </div>
           </div>
-          <div className="h-44 text-sm font-medium flex gap-3 flex-col justify-center items-center border border-gray-300 dark:border-stone-700 rounded-md lg:rounded-lg xl:rounded-xl lg:h-48 xl:text-base xl:h-52">
+          <div className="h-44 text-sm font-medium flex gap-3 flex-col justify-center items-center border border-teal-600 rounded-md lg:rounded-lg xl:rounded-xl lg:h-48 xl:text-base xl:h-52 bg-white/5 backdrop-blur-sm">
             <div>
               <div className="mb-1">
                 <span className="opacity-80 mr-1">
@@ -525,7 +525,7 @@ export default async function Page(props: {
             </div>
           </div>
 
-          <div className="h-44  flex pb-6 flex-col justify-center items-center border border-gray-300 dark:border-stone-700 rounded-md lg:rounded-lg xl:rounded-xl lg:h-48 xl:h-52 xl:pb-3">
+          <div className="h-44  flex pb-6 flex-col justify-center items-center border border-teal-600 rounded-md lg:rounded-lg xl:rounded-xl lg:h-48 xl:h-52 xl:pb-3 bg-white/5 backdrop-blur-sm">
             <Image
               unoptimized
               width={90}
@@ -543,7 +543,7 @@ export default async function Page(props: {
           </div>
         </section>
 
-        <h2 className="mt-5 mb-4 text-xl font-semibold mx-auto sm:max-w-[640px] lg:max-w-[1024px] xl:max-w-[1280px] ">
+        <h2 className="mt-5 mb-4 text-xl mx-auto sm:max-w-[640px] lg:max-w-[1024px] xl:max-w-[1280px] text-teal-800 font-bold">
           Hourly Forecast
         </h2>
         <HourlyForecast

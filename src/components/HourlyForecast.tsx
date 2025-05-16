@@ -68,7 +68,7 @@ export default function HourlyForecast({
 
   return (
     <div
-      className="mt-4 rounded-md lg:rounded-lg xl:rounded-xl w-full h-auto overflow-x-auto whitespace-nowrap pb-2 sm:max-w-[640px] sm:mx-auto lg:max-w-[1024px] xl:max-w-[1280px] "
+      className="mt-4 rounded-md lg:rounded-lg xl:rounded-xl w-full h-auto overflow-x-auto whitespace-nowrap pb-2 sm:max-w-[640px] sm:mx-auto lg:max-w-[1024px] xl:max-w-[1280px] bg-white/5 backdrop-blur-sm"
       ref={containerRef} // ref for scrolling to the current hour card
     >
       <div className="inline-flex w-auto gap-2 ">
@@ -80,8 +80,8 @@ export default function HourlyForecast({
               className={`w-44 h-80 pt-2 px-5 flex flex-col  border rounded-md lg:rounded-lg xl:rounded-xl
               ${
                 index === activeHourIndex
-                  ? "border-gray-500 dark:border-stone-300"
-                  : " border-gray-300 dark:border-stone-700"
+                  ? "border-teal-900 dark:border-teal-700"
+                  : " border-teal-600"
               } `}
               key={index}
             >
@@ -98,7 +98,7 @@ export default function HourlyForecast({
                   <span>{hour.temp_c}</span>
                   <span className="text-xs font-medium">&deg;C</span>
                 </p>
-                <div className="border border-gray-300 dark:border-stone-700 rounded-md "></div>
+                <div className="border border-white rounded-md "></div>
                 <p>
                   <span>{hour.temp_f}</span>
 
@@ -148,12 +148,12 @@ export default function HourlyForecast({
               <div
                 className={`mt-5 h-full flex items-center justify-center border-t  ${
                   index === activeHourIndex
-                    ? "border-gray-500 dark:border-stone-300"
-                    : " border-gray-300 dark:border-stone-700"
+                    ? "border-teal-900 dark:border-teal-700"
+                    : " border-teal-600"
                 } `}
               >
                 <p
-                  className={`text-base  ${
+                  className={`text-base text-teal-600 ${
                     index === activeHourIndex
                       ? "font-medium opacity-100"
                       : "opacity-90"

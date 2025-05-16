@@ -54,19 +54,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} bg-white dark:bg-black`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+      <body className={`${inter.className}`}>
+        <Navbar />
+        <div
+          style={{
+            backgroundImage: `url('/bg-image.jpg')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
         >
-          <Navbar />
           <div className="min-h-[calc(100vh-49px)] flex flex-col justify-between">
             {children}
             <Footer />
           </div>
-        </ThemeProvider>
+        </div>
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
     </html>

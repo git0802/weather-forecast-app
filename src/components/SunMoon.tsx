@@ -100,7 +100,7 @@ export default function SunMoonTime({ astro }: SunMoonTimeProps) {
   );
 
   return (
-    <section className="w-full h-fit text-sm lg:text-base p-4 border border-gray-300 dark:border-stone-700 rounded-md lg:h-full lg:p-5 lg:w-[24rem] lg:rounded-lg xl:rounded-xl">
+    <section className="w-full h-fit text-sm lg:text-base p-4 border border-teal-600 rounded-md lg:h-full lg:p-5 lg:w-[24rem] lg:rounded-lg xl:rounded-xl bg-white/5 backdrop-blur-sm">
       <p className="text-[15px] font-semibold lg:text-base">Sun/Moon</p>
       <div className=" sm:flex sm:gap-6 sm:items-center lg:block">
         <div className="sm:flex-1 ">
